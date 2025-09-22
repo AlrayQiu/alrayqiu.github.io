@@ -1,6 +1,11 @@
 baseURL = 'https://alrayqiu.github.io/'
 languageCode = 'zh-cn'
 title = 'Alray Doc'
+
+[module]
+  [[module.imports]]
+    path = 'github.com/google/docsy'
+
 theme = "docsy"
 
 [params]
