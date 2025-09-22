@@ -1,0 +1,25 @@
+{
+    "name": "Hugo Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "budparr.language-hugo-vscode",
+                "esbenp.prettier-vscode",
+                "stylelint.vscode-stylelint"
+            ]
+        }
+    },
+    "forwardPorts": [
+        1313
+    ],
+    "postCreateCommand": "npm install && hugo server --bind=0.0.0.0 --baseURL=http://localhost"
+}
