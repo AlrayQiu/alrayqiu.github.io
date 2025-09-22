@@ -2,4 +2,13 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 
-theme: ["PaperMod"]
+theme="PaperMod"
+
+[params]
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = true
+  ShowTags = true
+  ShowHomeContent = true
