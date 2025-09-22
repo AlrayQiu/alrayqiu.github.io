@@ -20,3 +20,6 @@ theme = "docsy"
 
 [markup.goldmark.renderer]
   unsafe = true
+[markup]
+  [markup.highlight]
+      style = "onedark"
