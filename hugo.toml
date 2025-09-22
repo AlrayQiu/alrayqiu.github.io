@@ -12,8 +12,3 @@ theme="PaperMod"
     ShowShareButtons = true
     ShowTags = true
     ShowHomeContent = true
-[outputs]
-    home = ["HTML", "RSS"]
-    section = ["HTML", "RSS"]
-    taxonomy = ["HTML", "RSS"]
-    taxonomyTerm = ["HTML", "RSS"]

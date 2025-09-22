@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+            submodules: true          # ★ 拉取主题子模块
+            submodules: recursive   # 若主题里还有子模块
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
