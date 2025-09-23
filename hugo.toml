@@ -12,19 +12,18 @@ theme = "docsy"
 
 [params]
   description = "这是一个使用 Docsy 构建的 Hugo 文档站"
-  ui.navbar_logo = true
-  ui.footer_about_enable = true
-  ui.showLightDarkModeMenu = true
-[params.ui]
-  sidebar_search_disable = true
-[params.search]
-  enabled = true
 
 [params.ui]
-sidebar_menu_compact = true
-ul_show = 1
-sidebar_menu_foldable = true
-sidebar_cache_limit = 1000
+  sidebar_search_disable = true
+  sidebar_menu_compact = true
+  ul_show = 1
+  sidebar_menu_foldable = true
+  sidebar_cache_limit = 1000  
+  navbar_logo = true
+  footer_about_enable = true
+  showLightDarkModeMenu = true
+[params.search]
+  enabled = true
 
 [markup.goldmark.renderer]
   unsafe = true
