@@ -1,7 +1,8 @@
-FROM mcr.microsoft.com/devcontainers/base:jammy
+
+FROM node:20
 
 # 安装 Hugo Extended
-RUN curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.121.1_Linux-64bit.tar.gz \
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.150.0/hugo_0.150.0_linux-amd64.tar.gz \
     | tar -xz -C /usr/local/bin hugo
 
 # 安装依赖工具

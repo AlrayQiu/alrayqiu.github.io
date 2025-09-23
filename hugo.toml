@@ -23,3 +23,13 @@ theme = "docsy"
 [markup]
   [markup.highlight]
       style = "onedark"
+
+[[menu.main]]
+  name = "Navigation"
+  url = "/Navigation/"
+  weight = 1
+
+[[menu.main]]
+  name = "AutoAim"
+  url = "/AutoAim/"
+  weight = 2
