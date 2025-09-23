@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>构建系统并运行 on Alray Doc</title><link>https://alrayqiu.github.io/autoaim/buildandrun/</link><description>Recent content in 构建系统并运行 on Alray Doc</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://alrayqiu.github.io/autoaim/buildandrun/index.xml" rel="self" type="application/rss+xml"/><item><title>集成到现有代码中</title><link>https://alrayqiu.github.io/autoaim/buildandrun/%E9%9B%86%E6%88%90%E5%88%B0%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/buildandrun/%E9%9B%86%E6%88%90%E5%88%B0%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p&gt;这是第一章的内容。&lt;/p&gt;</description></item><item><title>运行已有Ros包</title><link>https://alrayqiu.github.io/autoaim/buildandrun/%E4%BD%9C%E4%B8%BAros%E5%8C%85%E8%BF%90%E8%A1%8C/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/buildandrun/%E4%BD%9C%E4%B8%BAros%E5%8C%85%E8%BF%90%E8%A1%8C/</guid><description>&lt;p&gt;这是第二章的内容。&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>构建系统并运行 on Alray Doc</title><link>https://alrayqiu.github.io/autoaim/buildandrun/</link><description>Recent content in 构建系统并运行 on Alray Doc</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://alrayqiu.github.io/autoaim/buildandrun/index.xml" rel="self" type="application/rss+xml"/><item><title>集成到现有代码中</title><link>https://alrayqiu.github.io/autoaim/buildandrun/%E9%9B%86%E6%88%90%E5%88%B0%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/buildandrun/%E9%9B%86%E6%88%90%E5%88%B0%E9%A1%B9%E7%9B%AE/</guid><description/></item><item><title>运行已有Ros包</title><link>https://alrayqiu.github.io/autoaim/buildandrun/%E4%BD%9C%E4%B8%BAros%E5%8C%85%E9%9B%86%E6%88%90/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/buildandrun/%E4%BD%9C%E4%B8%BAros%E5%8C%85%E9%9B%86%E6%88%90/</guid><description>&lt;h2 id="拉取最新的ros仓库"&gt;拉取最新的ROS仓库&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;作为完整项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git clone https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-$ROS_DISTRO --single-branch --recursive {/path/to/ws/pkgs}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;作为子仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git submodule add https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-$ROS_DISTRO {/path/to/ws/pkgs} 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git submodule update --init --single-branch --recursive
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="集成到其他ros包中"&gt;集成到其他ros包中&lt;/h2&gt;
+&lt;p&gt;以&lt;code&gt;ROS2-humble&lt;/code&gt;为例子&lt;/p&gt;
+&lt;p&gt;在需要使用&lt;code&gt;ROS包&lt;/code&gt;的&lt;code&gt;Package.xml&lt;/code&gt;中添加&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-[xml]" data-lang="[xml]"&gt; &amp;lt;depend&amp;gt;alliance_ros_auto_aim&amp;lt;/depend&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在需要使用&lt;code&gt;ROS包&lt;/code&gt;的&lt;code&gt;CMakeLists.txt&lt;/code&gt;中添加&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-[CMake]" data-lang="[CMake]"&gt; ament_target_dependencies(&amp;lt;your project&amp;gt;
+ alliance_ros_auto_aim
+ )
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
