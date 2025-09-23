@@ -1,6 +1,8 @@
 baseURL = 'https://alrayqiu.github.io/'
 languageCode = 'zh-cn'
 title = 'Alray Doc'
+sectionPagesMenu = "main"
+
 
 [module]
   [[module.imports]]
