@@ -1,8 +1,0 @@
-<nav class="pagination">
-  {{ with .PrevInSection }}
-    <a class="btn btn-outline-primary" href="{{ .RelPermalink }}">← {{ .Title }}</a>
-  {{ end }}
-  {{ with .NextInSection }}
-    <a class="btn btn-outline-primary float-end" href="{{ .RelPermalink }}">{{ .Title }} →</a>
-  {{ end }}
-</nav>
