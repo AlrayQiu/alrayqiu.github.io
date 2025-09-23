@@ -3,18 +3,18 @@
 &lt;ul&gt;
 &lt;li&gt;作为完整项目&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git clone https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-$ROS_DISTRO --single-branch --recursive {/path/to/ws/pkgs}
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-&lt;span style="color:#e06c75"&gt;$ROS_DISTRO&lt;/span&gt; --single-branch --recursive &lt;span style="color:#56b6c2"&gt;{&lt;/span&gt;/path/to/ws/pkgs&lt;span style="color:#56b6c2"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;作为子仓库&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git submodule add https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-$ROS_DISTRO {/path/to/ws/pkgs} 
-&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code class="language-[sh]" data-lang="[sh]"&gt;git submodule update --init --single-branch --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="集成到其他ros包中"&gt;集成到其他ros包中&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule add https://github.com//alliance-algorithm/alliance_ros_auto_aim -b ros2-&lt;span style="color:#e06c75"&gt;$ROS_DISTRO&lt;/span&gt; &lt;span style="color:#56b6c2"&gt;{&lt;/span&gt;/path/to/ws/pkgs&lt;span style="color:#56b6c2"&gt;}&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule update --init --single-branch --recursive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="集成到其他ros包中"&gt;集成到其他ros包中&lt;/h2&gt;
 &lt;p&gt;以&lt;code&gt;ROS2-humble&lt;/code&gt;为例子&lt;/p&gt;
 &lt;p&gt;在需要使用&lt;code&gt;ROS包&lt;/code&gt;的&lt;code&gt;Package.xml&lt;/code&gt;中添加&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-[xml]" data-lang="[xml]"&gt; &amp;lt;depend&amp;gt;alliance_ros_auto_aim&amp;lt;/depend&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在需要使用&lt;code&gt;ROS包&lt;/code&gt;的&lt;code&gt;CMakeLists.txt&lt;/code&gt;中添加&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-[CMake]" data-lang="[CMake]"&gt; ament_target_dependencies(&amp;lt;your project&amp;gt;
- alliance_ros_auto_aim
- )
-&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;&amp;lt;depend&amp;gt;&lt;/span&gt;alliance_ros_auto_aim&lt;span style="color:#e06c75"&gt;&amp;lt;/depend&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在需要使用&lt;code&gt;ROS包&lt;/code&gt;的&lt;code&gt;CMakeLists.txt&lt;/code&gt;中添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-CMake" data-lang="CMake"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e5c07b"&gt;ament_target_dependencies&lt;/span&gt;(&lt;span style="color:#98c379"&gt;&amp;lt;your&lt;/span&gt; &lt;span style="color:#98c379"&gt;project&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#98c379"&gt;alliance_ros_auto_aim&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title/><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E5%99%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E5%99%A8/</guid><description/></item></channel></rss>
