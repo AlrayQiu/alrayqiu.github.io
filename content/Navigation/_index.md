@@ -4,7 +4,7 @@ title: "导航规划"
 weight: 1
 description: ""
 toc: true
-type = "docs"
+type: "docs"
 +++
 
 
