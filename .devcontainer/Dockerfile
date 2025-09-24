@@ -1,15 +1,32 @@
+# .devcontainer/Dockerfile
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
-FROM node:20
+# 安装 Hugo Extended 和 Node.js（使用官方脚本）
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    wget \
+    unzip \
+    gnupg \
+    golang\
+    ca-certificates \
+    build-essential \
+    libglib2.0-dev \
+    libssl-dev \
+    libffi-dev \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest \
+    | grep "browser_download_url.*hugo_extended.*Linux-64bit.tar.gz" \
+    | cut -d '"' -f 4 \
+    | wget -i - -O hugo.tar.gz \
+    && tar -xzf hugo.tar.gz \
+    && mv hugo /usr/local/bin/hugo \
+    && rm hugo.tar.gz
 
-# 安装 Hugo Extended
-RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.150.0/hugo_0.150.0_linux-amd64.tar.gz \
-    | tar -xz -C /usr/local/bin hugo
-
-# 安装依赖工具
-RUN apt-get update && apt-get install -y git
-
-# 安装 Node.js 和 PostCSS 相关依赖
-RUN npm install -g postcss postcss-cli autoprefixer
-
-# 设置工作目录
+# 切换到非 root 用户
+USER vscode
 WORKDIR /workspace
+
+RUN git config --global user.email "1780284652@qq.com" \
+    && git config --global user.name "alray"

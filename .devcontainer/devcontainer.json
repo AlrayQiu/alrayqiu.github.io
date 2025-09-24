@@ -1,25 +1,21 @@
 {
-    "name": "Hugo Dev Container",
+    "name": "Hugo Dev with SSH",
     "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
+        "dockerfile": "Dockerfile"
     },
-    "features": {
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "20"
-        }
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=${env:HOME}/.ssh/id_rsa,target=/home/vscode/.ssh/id_rsa,type=bind,consistency=cached"
+    ],
+    "postCreateCommand": "chmod 600 ~/.ssh/id_rsa && ssh-keyscan github.com >> ~/.ssh/known_hosts",
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
     },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "budparr.language-hugo-vscode",
-                "esbenp.prettier-vscode",
-                "stylelint.vscode-stylelint"
-            ]
-        }
-    },
+    "extensions": [
+        "budparr.language-hugo-vscode",
+        "esbenp.prettier-vscode"
+    ],
     "forwardPorts": [
         1313
-    ],
-    "postCreateCommand": "npm install && hugo server --bind=0.0.0.0 --baseURL=http://localhost"
+    ]
 }
