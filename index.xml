@@ -17,10 +17,9 @@
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-CMake" data-lang="CMake"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e5c07b"&gt;ament_target_dependencies&lt;/span&gt;(&lt;span style="color:#98c379"&gt;&amp;lt;your&lt;/span&gt; &lt;span style="color:#98c379"&gt;project&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#98c379"&gt;alliance_ros_auto_aim&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>识别器 + PNP求解器</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</guid><description>&lt;h1 id="识别器"&gt;识别器&lt;/h1&gt;
-&lt;h2 id="总览"&gt;总览&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>识别器 + PNP求解器</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</guid><description>&lt;h2 id="识别器"&gt;识别器&lt;/h2&gt;
 &lt;p&gt;识别器要求分析装甲板的颜色,分为颜色数字识别和二维角点信息获取&lt;/p&gt;
-&lt;h3 id="颜色数字识别"&gt;颜色数字识别&lt;/h3&gt;
+&lt;h3 id="颜色数字识别方案概览"&gt;颜色数字识别方案概览&lt;/h3&gt;
 &lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
@@ -52,7 +51,7 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id="灯条角点识别"&gt;灯条角点识别&lt;/h3&gt;
+&lt;h3 id="灯条角点识别方案概览"&gt;灯条角点识别方案概览&lt;/h3&gt;
 &lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
@@ -79,6 +78,6 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="yolo--pca-方案"&gt;yolo + PCA 方案&lt;/h2&gt;
+&lt;h3 id="yolo--pca-方案"&gt;yolo + PCA 方案&lt;/h3&gt;
 &lt;p&gt;这是目前我认为最好的方案，模型我们选择深大开源模型，在我们平台上可以达到最高 120fps&lt;/p&gt;
 &lt;h1 id="施工中"&gt;施工中&lt;/h1&gt;</description></item></channel></rss>
