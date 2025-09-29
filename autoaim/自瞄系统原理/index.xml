@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自瞄系统原理 on Alray Doc</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/</link><description>Recent content in 自瞄系统原理 on Alray Doc</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>识别器 + PNP求解器</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</guid><description>&lt;h2 id="识别器"&gt;识别器&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自瞄系统原理 on Alray Doc</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/</link><description>Recent content in 自瞄系统原理 on Alray Doc</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>整车预测</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E6%95%B4%E8%BD%A6%E9%A2%84%E6%B5%8B/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E6%95%B4%E8%BD%A6%E9%A2%84%E6%B5%8B/</guid><description>&lt;h2 id="ekf"&gt;EKF&lt;/h2&gt;</description></item><item><title>识别器 + PNP求解器</title><link>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/autoaim/%E8%87%AA%E7%9E%84%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/%E8%AF%86%E5%88%AB%E6%B1%82%E8%A7%A3%E5%99%A8/</guid><description>&lt;h2 id="识别器"&gt;识别器&lt;/h2&gt;
 &lt;p&gt;识别器要求分析装甲板的颜色,分为颜色数字识别和二维角点信息获取&lt;/p&gt;
 &lt;h3 id="颜色数字识别方案概览"&gt;颜色数字识别方案概览&lt;/h3&gt;
 &lt;table&gt;
@@ -59,6 +59,28 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id="yolo--pca-方案"&gt;yolo + PCA 方案&lt;/h3&gt;
+&lt;h2 id="yolo--pca-方案求角点"&gt;yolo + PCA 方案求角点&lt;/h2&gt;
 &lt;p&gt;这是目前我认为最好的方案，模型我们选择深大开源模型，在我们平台上可以达到最高 120fps&lt;/p&gt;
-&lt;h1 id="施工中"&gt;施工中&lt;/h1&gt;</description></item></channel></rss>
+&lt;h3 id="yolo-模型"&gt;yolo 模型&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;感谢深大开源地址 &lt;br&gt;
+&lt;a href="https://bbs.robomaster.com/article/54091"&gt;https://bbs.robomaster.com/article/54091&lt;/a&gt;&lt;br&gt;
+教程其 &lt;a href="https://github.com/broalantaps/RobotDetectionModel"&gt;&lt;code&gt;Git仓库&lt;/code&gt;&lt;/a&gt;有，这里偷个懒&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id="pca-灯条识别"&gt;PCA 灯条识别&lt;/h3&gt;
+&lt;p&gt;PCA 在这里的作用是找出二位点集分布方差最大的方向，也就是数据的主轴，我们在此把图像的亮度信息利用上&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;亮度信息提取与归一化&lt;br&gt;
+这里可以选择&lt;code&gt;转灰度图&lt;/code&gt;或者使用&lt;code&gt; hsv 空间&lt;/code&gt;获取亮度，之后对处理后图像进行&lt;code&gt;最大最小归一化&lt;/code&gt;到 &lt;code&gt;0~1&lt;/code&gt;,并等距采样为&lt;code&gt;[0,...,255]&lt;/code&gt;的值&lt;/li&gt;
+&lt;/ol&gt;
+$$
+x' = \left\lfloor \frac{x - x_{\min}}{x_{\max} - x_{\min}} \times 255 \right\rfloor
+$$$$
+x \in \{ I(p) \mid p \in \Omega \} \
+were \ \Omega \ is \ ROI
+$$&lt;ol start="2"&gt;
+&lt;li&gt;构建 PCA 所使用的点集&lt;br&gt;
+为了利用亮度信息，我们一个点添加在集合中出现其在图像中的亮度次&lt;/li&gt;
+&lt;/ol&gt;
+$$
+M = \{ (p, x'(p)) \mid p \in \Omega \}
+$$&lt;p&gt;其中 \((p,x'(p))\) 表示点 \(p\) 出现了 \(x'(p)\) 次&lt;/p&gt;</description></item></channel></rss>
