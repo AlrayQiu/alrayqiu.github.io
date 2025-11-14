@@ -3,6 +3,7 @@ title: "云台辨识：全方向Yaw"
 weight: 2
 type: "docs"
 toc: false
+math: true
 ---
 
 ## 描述
