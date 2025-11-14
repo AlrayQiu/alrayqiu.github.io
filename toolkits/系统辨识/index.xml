@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>系统辨识包 on Alray Doc</title><link>https://alrayqiu.github.io/toolkits/%E7%B3%BB%E7%BB%9F%E8%BE%A8%E8%AF%86/</link><description>Recent content in 系统辨识包 on Alray Doc</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://alrayqiu.github.io/toolkits/%E7%B3%BB%E7%BB%9F%E8%BE%A8%E8%AF%86/index.xml" rel="self" type="application/rss+xml"/><item><title>云台辨识：全方向Yaw</title><link>https://alrayqiu.github.io/toolkits/%E7%B3%BB%E7%BB%9F%E8%BE%A8%E8%AF%86/gimbal_yaw/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alrayqiu.github.io/toolkits/%E7%B3%BB%E7%BB%9F%E8%BE%A8%E8%AF%86/gimbal_yaw/</guid><description>&lt;h2 id="描述"&gt;描述&lt;/h2&gt;
+&lt;p&gt;$\dot\theta$ 是云台yaw轴速度&lt;br&gt;
+$\mu$ 是控制力矩或电流&lt;/p&gt;
+&lt;p&gt;云台建模为
+&lt;/p&gt;
+$$\ddot\theta = -\frac{B}{J} \dot\theta + \frac{1}{J}\mu$$&lt;p&gt;对应传递函数为
+&lt;/p&gt;
+$$\dot\theta(s) = \frac{b \mu(s)}{s - a}$$&lt;p&gt;辨识参数 $a \ b$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;初始化后会在~/alliance/identify 中创建一个文件夹，名字为当前时间戳，如果没有路径则会报错&lt;/p&gt;
+&lt;h2 id="定义"&gt;定义&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-Cpp" data-lang="Cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#c678dd"&gt;class&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;GimbalYaw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;GimbalYaw&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt; &lt;span style="color:#e06c75"&gt;time_step&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt; &lt;span style="color:#e06c75"&gt;control_torque_max&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;ExcitationSignal&lt;/span&gt; &lt;span style="color:#e06c75"&gt;signal_type&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;function&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;(&lt;span style="color:#e5c07b"&gt;void&lt;/span&gt;)&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;GetVelocity&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;function&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#e5c07b"&gt;void&lt;/span&gt;(&lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;)&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;SetTorque&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;optional&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;firction&lt;/span&gt; &lt;span style="color:#56b6c2"&gt;=&lt;/span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;nullopt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;IdentifierState&lt;/span&gt; &lt;span style="color:#61afef;font-weight:bold"&gt;update&lt;/span&gt;(); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="构造函数"&gt;构造函数&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-Cpp" data-lang="Cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e06c75"&gt;GimbalYaw&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt; &lt;span style="color:#e06c75"&gt;time_step&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt; &lt;span style="color:#e06c75"&gt;control_torque_max&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;ExcitationSignal&lt;/span&gt; &lt;span style="color:#e06c75"&gt;signal_type&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;function&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;(&lt;span style="color:#e5c07b"&gt;void&lt;/span&gt;)&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;GetVelocity&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;function&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#e5c07b"&gt;void&lt;/span&gt;(&lt;span style="color:#c678dd"&gt;const&lt;/span&gt; &lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;)&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;SetTorque&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;optional&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#e5c07b"&gt;double&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#e06c75"&gt;firction&lt;/span&gt; &lt;span style="color:#56b6c2"&gt;=&lt;/span&gt; &lt;span style="color:#e06c75"&gt;std&lt;/span&gt;&lt;span style="color:#56b6c2"&gt;::&lt;/span&gt;&lt;span style="color:#e06c75"&gt;nullopt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="params"&gt;params&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Name&lt;/th&gt;
+ &lt;th&gt;Desc&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;time_step&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;每次迭代的时间差&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;control_torque_max&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;你希望的辨识激励最大值 &lt;code&gt;exp: A -&amp;gt; ASin(t)&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;siganl_type&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;激励信号类型&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;GetVelocity&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;获取当前速度的方法&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;SetTorque&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;设置云台力矩的方法&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;firction&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;系统的摩檫力，输出会自动补偿这个力&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item></channel></rss>
